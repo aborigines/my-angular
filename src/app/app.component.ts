@@ -10,11 +10,16 @@ export class AppComponent {
   sources: any = ['ร้าน aฟ', 'ร้าน b', 'ร้าน c', 'ร้าน dส'];
   targets: any = [];
   isSearch: boolean = false;
+  isSearch2: boolean = false;
   filter = true;
   selected: Array<any> = [];
 
   search() {
     this.isSearch = true;
+  }
+
+  search2() {
+    this.isSearch2 = true;
   }
 
   moveNext() {

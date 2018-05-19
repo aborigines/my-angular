@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container my-5">
     <div class="row">
         <h1>#1</h1>
     </div>
@@ -26,11 +26,25 @@
     </div>
     <div class="row mt-3">
         <div class="col-md-3">
-            <input placeholder="filter source" class="form-control">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="">Phone</span>
+                </div>
+                <input type="text" class="form-control" name="phone" id="phone">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" (click)="search2()">search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isSearch2">
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <input placeholder="filter whillist" class="form-control">
         </div>
         <div class="col-md-1 mx-3"></div>
         <div class="col-md-3">
-            <input placeholder="filter target" class="form-control">
+            <input placeholder="filter balcklist" class="form-control">
         </div>
     </div>
     <div class="row">
@@ -52,6 +66,6 @@
                 <option *ngFor="let target of targets; let i = index" [value]="target">{{target}}</option>
             </select>
         </div>
-        {{ selected| json }}
+    </div>
     </div>
 </section>
