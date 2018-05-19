@@ -1,0 +1,57 @@
+<section class="container">
+    <div class="row">
+        <h1>#1</h1>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="">Phone</span>
+                </div>
+                <input type="text" class="form-control" name="phone" id="phone">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" (click)="search()">search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-3" *ngIf="isSearch">
+            <dual-list [source]="sources" [(destination)]="targets" [filter]="filter" height="200px"></dual-list>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <h1>#2</h1>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <input placeholder="filter source" class="form-control">
+        </div>
+        <div class="col-md-1 mx-3"></div>
+        <div class="col-md-3">
+            <input placeholder="filter target" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <select multiple class="form-control" id="sel2" [(ngModel)]="selected">
+                <option *ngFor="let source of sources; let i = index" [value]="source">{{source}}</option>
+            </select>
+        </div>
+        <div class="col-md-1 mx-3">
+            <div class="row">
+                <button class="btn btn-primary" (click)="moveNext()">></button>
+            </div>
+            <div class="row mt-1">
+                <button class="btn btn-primary" (click)="moveBack()"><</button>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <select multiple class="form-control" id="sel2" [(ngModel)]="selected">
+                <option *ngFor="let target of targets; let i = index" [value]="target">{{target}}</option>
+            </select>
+        </div>
+        {{ selected| json }}
+    </div>
+</section>
