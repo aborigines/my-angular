@@ -6,10 +6,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularDualListBoxModule } from 'angular-dual-listbox';
 
 import { AppComponent } from './app.component';
+import { CustomDualListComponent } from './custom-dual-list/custom-dual-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CustomDualListComponent
   ],
   imports: [
     BrowserModule,
