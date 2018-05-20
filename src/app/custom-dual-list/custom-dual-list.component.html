@@ -1,7 +1,12 @@
 <div class="dual-list">
 	<div class="listbox">
-		<p>{{sourceName}}</p>
-		<div class="record-picker">
+    <p>{{sourceName}}</p>
+    
+    <form *ngIf="filter" class="filter">
+      <input class="form-control" name="filterSource" [(ngModel)]="available.picker" (ngModelChange)="onFilter(available)" placeholder="filter {{sourceName}}">
+    </form>
+
+    <div class="record-picker mt-5">
 			<ul [ngStyle]="{'max-height': height, 'min-height': height}" [ngClass]="{over:available.dragOver}"
 				(drop)="drop($event, confirmed)" (dragover)="allowDrop($event, available)" (dragleave)="dragLeave()">
 				<li *ngFor="let item of available.sift; let idx=index;"
@@ -10,8 +15,8 @@
 					draggable="true" (dragstart)="drag($event, item, available)" (dragend)="dragEnd(available)"
 				><label>{{item._name}}</label></li>
 			</ul>
-		</div>
-	</div>
+    </div>
+  </div>
 
 	<div class="buttonbox">
 		<button type="button" class="btn btn-primary btn-block" (click)="moveItem(available, confirmed)" 
@@ -30,8 +35,13 @@
 	</div>
 
 	<div class="listbox">
-		<p>{{targetName}}</p>
-		<div class="record-picker">
+    <p>{{targetName}}</p>
+
+    <form *ngIf="filter" class="filter">
+      <input class="form-control" name="filterDestination" [(ngModel)]="confirmed.picker" (ngModelChange)="onFilter(confirmed)" placeholder="filter {{targetName}}">
+    </form>
+
+		<div class="record-picker mt-5">
 			<ul [ngStyle]="{'max-height': height, 'min-height': height}" [ngClass]="{over:confirmed.dragOver}"
 				(drop)="drop($event, available)" (dragover)="allowDrop($event, confirmed)" (dragleave)="dragLeave()">
 				<li *ngFor="let item of confirmed.sift; let idx=index;"
@@ -40,6 +50,6 @@
 					draggable="true" (dragstart)="drag($event, item, confirmed)" (dragend)="dragEnd(confirmed)"
 				><label>{{item._name}}</label></li>
 			</ul>
-		</div>
+    </div>
 	</div>
 </div>
